@@ -46,10 +46,7 @@ def process_user(username, date_range, excluded_workdays, config):
 	jira_url = config['Jira']['url']
 
 	logger.debug('Felhasználó (%s) munkaidők feldolgozása', username)
-	#Módosítani kell a kezdő dátumot az előző napra, mert alapban a 00:00:00-ás kezdésű worklog-okat nem adja vissza a Jira
 	start_date = dates[dates.__len__()-1]
-	start_date = start_date - timedelta(0,0,0,1)
-	logger.debug('Módosított kezdő dátum: %s', start_date)
 	worklogs = query_jira_worklogs(jira_url, jira_user, jira_passwd, convert_date_2_str(start_date), convert_date_2_str(dates[0]), username)
 	logger.debug('Felhasználó (%s) részletes adatok lekérdezése', username)
 	user = query_user_details(jira_url, jira_user, jira_passwd, username)
