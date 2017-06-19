@@ -13,7 +13,7 @@ def wlog_date_str_format():
 	return '%Y-%m-%d'
 
 def wlog_datetime_str_format():
-	return '%Y-%m-%dT%H:%M:%S%z'
+	return '%Y-%m-%dT%H:%M:%S.%f%z'
 
 def load_excluded_workdays(config):
 	exclude_file = config['Common']['exluded_workdays_file']
